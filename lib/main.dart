@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resp/Screens/homeScreen.dart';
 import 'package:resp/Screens/splashScreen.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
         
         primarySwatch: Colors.blue,
       ),
-      home: SplashScreen(),
+      home: HomeScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
