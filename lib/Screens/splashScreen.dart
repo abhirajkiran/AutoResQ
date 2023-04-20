@@ -23,7 +23,7 @@ class SplashScreen extends StatelessWidget {
                 ),
                 //color: Colors.green,
                 child: Image.asset(
-                  'android/assets/images/breakdown1.jpg',
+                  'assets/images/breakdown1.jpg',
                   fit: BoxFit.fill,
                 )),
             SizedBox(

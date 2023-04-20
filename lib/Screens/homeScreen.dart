@@ -25,7 +25,10 @@ class HomeScreen extends StatelessWidget {
             Container(
               height:100,
               width: 300,
-              color: Colors.green,
+              child:Image.asset(
+                  'assets/images/add.png',
+                  fit: BoxFit.fill,
+                ) ,
             ),
 
             SizedBox(height: 50,),
