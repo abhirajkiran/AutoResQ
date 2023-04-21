@@ -7,45 +7,99 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
           children: [
-            Container(
-                height: 550,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(40.0),
-                      bottomRight: Radius.circular(40.0),
-                      topLeft: Radius.circular(40.0),
-                      bottomLeft: Radius.circular(40.0)),
-                ),
-                //color: Colors.green,
-                child: Image.asset(
-                  'assets/images/breakdown1.jpg',
-                  fit: BoxFit.fill,
-                )),
-            SizedBox(
+            splashImageWidget(),
+            const SizedBox(
               height: 80,
             ),
             ElevatedButton(
+
               onPressed: () {},
               child: Text("Get Started"),
-             style: ElevatedButton.styleFrom(
+              style: ElevatedButton.styleFrom(
+               fixedSize: Size(200,200),
                 backgroundColor: Colors.green,
-                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-                textStyle: TextStyle(
-                fontSize:25,
-                fontWeight: FontWeight.bold)),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+
+                ),
+              ),
+            ),
+            SizedBox(height: 35),
+            Text(
+              'Auto ResQ v1.0',
+              style: TextStyle(fontWeight: FontWeight.w400),
             )
-            ,
-            SizedBox(height:35),
-            Text('Auto ResQ v1.0',style: TextStyle(fontWeight: FontWeight.bold),)
           ],
         ),
       ),
     );
   }
 }
-//Image.asset('android/assets/images/breakdown1.jpg',height:650,width:)
+
+class splashImageWidget extends StatelessWidget {
+  const splashImageWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: <Widget>[
+        Container(
+            height: 550,
+            width: double.infinity,
+            child: ClipRRect(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(60),
+                  bottomRight: Radius.circular(60),
+                ),
+                child: Image.asset(
+                  'assets/images/breakdown1.jpg',
+                  fit: BoxFit.fill,
+                ))),
+        SplashScreenTextWidget()
+      ],
+    );
+  }
+}
+
+class SplashScreenTextWidget extends StatelessWidget {
+  const SplashScreenTextWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: const [
+          Center(
+              child: Padding(
+            padding: EdgeInsets.only(top: 140.0),
+            child: Text('Have Some',
+                style: TextStyle(
+                    fontSize: 35,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold)),
+          )),
+          Center(
+              child: Text(
+            'problem with?',
+            style: TextStyle(
+                fontSize: 35, color: Colors.white, fontWeight: FontWeight.bold),
+          )),
+          Center(
+              child: Text(
+            'your vehicle?',
+            style: TextStyle(
+                fontSize: 35, color: Colors.green, fontWeight: FontWeight.bold),
+          )),
+        ],
+      ),
+    );
+  }
+}

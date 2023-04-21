@@ -62,6 +62,10 @@ flutter:
   assets:
     - assets\images\breakdown1.jpg
     - assets\images\add.png
+    - assets\images\Gas Station.png
+    - assets\images\MECHANIC.png
+    - assets\images\Tow Truck.png
+    - assets\images\TYRE.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
