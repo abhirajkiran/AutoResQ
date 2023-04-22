@@ -20,7 +20,7 @@ class SplashScreen extends StatelessWidget {
               onPressed: () {},
               child: Text("Get Started"),
               style: ElevatedButton.styleFrom(
-               fixedSize: Size(200,200),
+               fixedSize: Size(180,180),
                 backgroundColor: Colors.green,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15),

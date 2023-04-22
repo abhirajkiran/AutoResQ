@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:resp/Screens/loginScreen.dart';
+import 'package:resp/Screens/splashScreen.dart';
 
 import 'Screens/homeScreen.dart';
 
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
         
         primarySwatch: Colors.blue,
       ),
-      home: HomeScreen(),
+      home: LoginScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
