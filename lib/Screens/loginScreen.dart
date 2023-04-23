@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:resp/Screens/SignupScreen.dart';
 import 'package:resp/Screens/homeScreen.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -176,7 +177,13 @@ class LoginScreen extends StatelessWidget {
                             "Don't have an account yet?",
                             style: TextStyle(color: Colors.white),
                           ),
-                          TextButton(onPressed: () {}, child: Text('Sign up'))
+                          TextButton(onPressed: () {
+                            Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SignupScreen()),
+                          );
+                          }, child: Text('Sign up'))
                         ],
                       ),
                     )
