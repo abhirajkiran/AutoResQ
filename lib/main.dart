@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:resp/Screens/loginScreen.dart';
 import 'package:resp/Screens/splashScreen.dart';
 
+import 'Screens/SignupScreen.dart';
 import 'Screens/homeScreen.dart';
 
 
