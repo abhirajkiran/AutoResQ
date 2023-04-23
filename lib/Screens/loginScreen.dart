@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:resp/Screens/homeScreen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -78,14 +79,20 @@ class LoginScreen extends StatelessWidget {
                     ClipRRect(
                       borderRadius: BorderRadius.all(Radius.circular(15)),
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomeScreen()),
+                          );
+                        },
                         style: ElevatedButton.styleFrom(
                           foregroundColor: Colors.white,
                           backgroundColor: Colors.green,
                           minimumSize: Size(350, 58),
                         ),
                         child: const Text(
-                          'Signup',
+                          'Login',
                           style: TextStyle(fontSize: 20),
                         ),
                       ),
@@ -158,14 +165,18 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height:150,),
+                    SizedBox(
+                      height: 150,
+                    ),
                     Container(
                       child: Row(
                         children: [
-                          SizedBox(width:60),
-                          Text("Don't have an account yet?",style: TextStyle(color: Colors.white),),
-                          TextButton(
-                              onPressed: () {}, child: Text('Sign up'))
+                          SizedBox(width: 60),
+                          Text(
+                            "Don't have an account yet?",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          TextButton(onPressed: () {}, child: Text('Sign up'))
                         ],
                       ),
                     )

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:resp/Screens/loginScreen.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -16,15 +17,18 @@ class SplashScreen extends StatelessWidget {
               height: 80,
             ),
             ElevatedButton(
-
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginScreen()),
+                );
+              },
               child: Text("Get Started"),
               style: ElevatedButton.styleFrom(
-               fixedSize: Size(180,180),
+                fixedSize: Size(170, 50),
                 backgroundColor: Colors.green,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15),
-
                 ),
               ),
             ),
