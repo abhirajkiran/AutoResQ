@@ -17,8 +17,8 @@ class LoginScreen extends StatelessWidget {
             width: double.infinity,
             opacity: const AlwaysStoppedAnimation(.8),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 130, left: 30),
+          const Padding(
+            padding: EdgeInsets.only(top: 130, left: 30),
             child: Text(
               'Hi!!!!!',
               style: TextStyle(
@@ -30,7 +30,7 @@ class LoginScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10, top: 180),
             child: ClipRRect(
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(30),
                 topRight: Radius.circular(30),
               ),
@@ -38,6 +38,139 @@ class LoginScreen extends StatelessWidget {
                 height: double.infinity,
                 width: double.infinity,
                 color: Colors.grey.withOpacity(.4),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 8.0, right: 8.0, top: 30),
+                      child: TextField(
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                            ),
+                            filled: true,
+                            hintStyle: TextStyle(
+                                color: Colors.grey[800],
+                                fontWeight: FontWeight.w300),
+                            hintText: "Phone number",
+                            fillColor: Colors.white),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 8.0, right: 8.0, top: 15),
+                      child: TextField(
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                            ),
+                            filled: true,
+                            hintStyle: TextStyle(
+                                color: Colors.grey[800],
+                                fontWeight: FontWeight.w300),
+                            hintText: "Password",
+                            fillColor: Colors.white),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 14,
+                    ),
+                    ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: Colors.white,
+                          backgroundColor: Colors.green,
+                          minimumSize: Size(350, 58),
+                        ),
+                        child: const Text(
+                          'Signup',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 3,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 224),
+                            child: TextButton(
+                                child: Text(
+                                  'Recover Password',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                onPressed: () {}),
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Center(
+                      child: Container(
+                        child: Text(
+                          'OR',
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 14,
+                    ),
+                    ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                      child: Container(
+                        height: 59,
+                        width: 350,
+                        color: Colors.white,
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 40.0),
+                                child: Image.asset(
+                                  'assets/images/google.png',
+                                  height: 30,
+                                ),
+                              ),
+                            ),
+                            TextButton(
+                                onPressed: () {},
+                                child: Text(
+                                  'Continue with Google',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      color: Color.fromARGB(255, 83, 76, 76),
+                                      fontWeight: FontWeight.w700),
+                                )),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(height:150,),
+                    Container(
+                      child: Row(
+                        children: [
+                          SizedBox(width:60),
+                          Text("Don't have an account yet?",style: TextStyle(color: Colors.white),),
+                          TextButton(
+                              onPressed: () {}, child: Text('Sign up'))
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           )

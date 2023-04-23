@@ -67,6 +67,7 @@ flutter:
     - assets\images\Tow Truck.png
     - assets\images\TYRE.png
     - assets\images\LoginBackground.png
+    - assets\images\google.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
