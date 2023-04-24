@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:resp/Screens/loginScreen.dart';
 
 class SignupScreen extends StatefulWidget {
  const SignupScreen({Key? key}) :super(key:key);
@@ -64,7 +65,7 @@ final GlobalKey<FormState> formkey =GlobalKey<FormState>();
               right: 35,
               left: 35),
               child: Column(
-                children: [
+                children: [                  
                   TextFormField(
                     controller: _FirstNamecontroller,
                     decoration: InputDecoration(
@@ -216,14 +217,24 @@ final GlobalKey<FormState> formkey =GlobalKey<FormState>();
                   color: Colors.white,
                  ),
                  ),
-                SizedBox(width:10 ,),
-                
-                Text("Login",style: TextStyle(
+                SizedBox(width:5 ,),
+                TextButton(onPressed: () {
+                            Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginScreen()),
+                          );
+                          }, child: Text('Login',style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18,
+                  color: Colors.green,
+                ),)),
+                /* Text("Login",style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 18,
                   color: Colors.green,
                 ),
-                )
+                ) */
                   ],
                 ),
           

@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.resp">
    <application
-        android:label="resp"
+        android:label="AutoResQ"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

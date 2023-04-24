@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:resp/Screens/NavBar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -253,7 +254,13 @@ class HomeTopButtonWidget extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: IconButton(onPressed: () {}, icon: Icon(Icons.menu, size: 35)),
+          child: IconButton(onPressed: () {
+            Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => NavBar()),
+                          );
+          }, icon: Icon(Icons.menu, size: 35)),
         ),
         Spacer(),
         Padding(
