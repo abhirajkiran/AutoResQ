@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
             SizedBox(height: 30),
             HomeAddWidget(),
             SizedBox(
-              height: 50,
+              height:10,
             ),
             HomeServicesMatrixWidget()
           ],
@@ -38,12 +38,12 @@ class HomeServicesMatrixWidget extends StatelessWidget {
     return Column(
       children: const [
         Padding(
-          padding: EdgeInsets.only(left: 50),
+          padding: EdgeInsets.only(left:35),
           child: FirstRowWidget(),
         ),
         SizedBox(height: 30),
         Padding(
-          padding: EdgeInsets.only(left: 50),
+          padding: EdgeInsets.only(left:35),
           child: SecondRowWidget(),
         )
       ],

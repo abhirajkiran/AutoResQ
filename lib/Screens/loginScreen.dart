@@ -105,7 +105,7 @@ class LoginScreen extends StatelessWidget {
                       children: [
                         Container(
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 224),
+                            padding: const EdgeInsets.only(left:200),
                             child: TextButton(
                                 child: Text(
                                   'Recover Password',
@@ -167,7 +167,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 150,
+                      height:50,
                     ),
                     Container(
                       child: Row(

@@ -4,14 +4,20 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:resp/Screens/loginScreen.dart';
 
 class SplashScreen extends StatelessWidget {
+
+ 
+  
   const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: SafeArea(
         child: Column(
+          
           children: [
+
             splashImageWidget(),
             const SizedBox(
               height: 80,
@@ -25,14 +31,14 @@ class SplashScreen extends StatelessWidget {
               },
               child: Text("Get Started"),
               style: ElevatedButton.styleFrom(
-                fixedSize: Size(170, 50),
+               fixedSize: Size(150,50),
                 backgroundColor: Colors.green,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15),
                 ),
               ),
             ),
-            SizedBox(height: 35),
+            
             Text(
               'Auto ResQ v1.0',
               style: TextStyle(fontWeight: FontWeight.w400),
@@ -51,10 +57,12 @@ class splashImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+        double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     return Stack(
       children: <Widget>[
         Container(
-            height: 550,
+            height:screenHeight/1.4,
             width: double.infinity,
             child: ClipRRect(
                 borderRadius: BorderRadius.only(
