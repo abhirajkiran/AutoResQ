@@ -68,6 +68,10 @@ flutter:
     - assets\images\TYRE.png
     - assets\images\LoginBackground.png
     - assets\images\google.png
+    - assets\images\must.jpg
+    - assets\images\green.jpg
+    - assets\images\User.png
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
