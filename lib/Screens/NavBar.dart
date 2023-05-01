@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:resp/Screens/SettingsScreen.dart';
 import 'package:resp/Screens/homeScreen.dart';
 import 'package:resp/Screens/loginScreen.dart';
-<<<<<<< HEAD
-=======
-
->>>>>>> main
 class NavBar extends StatelessWidget {
   const NavBar({super.key});
   
@@ -93,18 +89,11 @@ class NavBar extends StatelessWidget {
             leading: Icon(Icons.settings),
             title: Text('Settings'),
             onTap: ()=>Navigator.push(
-<<<<<<< HEAD
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SettingsScreen()),
-                          ),
-=======
                   context,
                   MaterialPageRoute(builder: (context) => SettingsScreen()),
             
           
                 ),
->>>>>>> main
           ),
           Divider(),
           ListTile(
@@ -117,19 +106,10 @@ class NavBar extends StatelessWidget {
             leading: Icon(Icons.exit_to_app),
             title: Text('Logout'),
             onTap: ()=>Navigator.push(
-<<<<<<< HEAD
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => LoginScreen()),
-                          ),
-          ),
-
-=======
                   context,
                   MaterialPageRoute(builder: (context) => LoginScreen()),
             ),
           ),         
->>>>>>> main
         ],
        ),
     );
