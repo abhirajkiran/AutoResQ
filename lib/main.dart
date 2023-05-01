@@ -6,7 +6,7 @@ import 'package:resp/Screens/splashScreen.dart';
 import 'Screens/NavBar.dart';
 import 'Screens/SignupScreen.dart';
 import 'Screens/homeScreen.dart';
-import 'Screens/SettingsScreen.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
           color:  Colors.green,
         ),
       ),
-      home: SplashScreen(),
+      home: LoginScreen(),
       debugShowCheckedModeBanner: false,
     );
   }

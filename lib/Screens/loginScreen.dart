@@ -4,8 +4,17 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:resp/Screens/SignupScreen.dart';
 import 'package:resp/Screens/homeScreen.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  bool _isSecurePassword = true;
+  final _phoneNumbercontroller = TextEditingController();
+  final _passwordcontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +55,7 @@ class LoginScreen extends StatelessWidget {
                       padding:
                           const EdgeInsets.only(left: 8.0, right: 8.0, top: 30),
                       child: TextField(
+                        controller: _phoneNumbercontroller,
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15.0),
@@ -62,16 +72,21 @@ class LoginScreen extends StatelessWidget {
                       padding:
                           const EdgeInsets.only(left: 8.0, right: 8.0, top: 15),
                       child: TextField(
+                         obscureText: _isSecurePassword,
+                        controller: _passwordcontroller,
                         decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                            ),
-                            filled: true,
-                            hintStyle: TextStyle(
-                                color: Colors.grey[800],
-                                fontWeight: FontWeight.w300),
-                            hintText: "Password",
-                            fillColor: Colors.white),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          filled: true,
+                          hintStyle: TextStyle(
+                              color: Colors.grey[800],
+                              fontWeight: FontWeight.w300),
+                          hintText: "Password",
+                          fillColor: Colors.white,
+                          suffixIcon: togglePassword(),
+                          
+                        ),
                       ),
                     ),
                     SizedBox(
@@ -105,7 +120,7 @@ class LoginScreen extends StatelessWidget {
                       children: [
                         Container(
                           child: Padding(
-                            padding: const EdgeInsets.only(left:200),
+                            padding: const EdgeInsets.only(left: 200),
                             child: TextButton(
                                 child: Text(
                                   'Recover Password',
@@ -167,7 +182,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height:50,
+                      height: 50,
                     ),
                     Container(
                       child: Row(
@@ -177,13 +192,15 @@ class LoginScreen extends StatelessWidget {
                             "Don't have an account yet?",
                             style: TextStyle(color: Colors.white),
                           ),
-                          TextButton(onPressed: () {
-                            Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SignupScreen()),
-                          );
-                          }, child: Text('Sign up'))
+                          TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SignupScreen()),
+                                );
+                              },
+                              child: Text('Sign up'))
                         ],
                       ),
                     )
@@ -195,5 +212,19 @@ class LoginScreen extends StatelessWidget {
         ],
       ),
     );   
+  }
+
+  Widget togglePassword() {
+    return IconButton(
+      onPressed: () {
+        setState(() {
+          _isSecurePassword = !_isSecurePassword;
+        });
+      },
+      icon: _isSecurePassword
+          ? Icon(Icons.visibility)
+          : Icon(Icons.visibility_off),
+      color: Colors.grey,
+    );
   }
 }
