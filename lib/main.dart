@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:resp/Screens/SettingsScreen.dart';
 
 import 'package:resp/Screens/loginScreen.dart';
 import 'package:resp/Screens/splashScreen.dart';
-
-import 'Screens/NavBar.dart';
-import 'Screens/SignupScreen.dart';
-import 'Screens/homeScreen.dart';
-
 
 void main() {
   runApp(const MyApp());
@@ -22,9 +16,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.blue,
       ),
-      home: SplashScreen(),
+      home: LoginScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
