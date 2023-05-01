@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:resp/Screens/SettingsScreen.dart';
 import 'package:resp/Screens/homeScreen.dart';
+import 'package:resp/Screens/loginScreen.dart';
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 class NavBar extends StatelessWidget {
   const NavBar({super.key});
   
@@ -30,8 +36,7 @@ class NavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      
-      child: ListView(
+   child: ListView(
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(accountName:Text('Account Name') , 
@@ -62,6 +67,7 @@ class NavBar extends StatelessWidget {
             title: Text('Userprofile'),
             onTap: ()=>null,
           ),
+          Divider(),
           ListTile(
             leading: Icon(Icons.notifications),
             title: Text('Notifications'),
@@ -82,10 +88,23 @@ class NavBar extends StatelessWidget {
               ),
             ),
           ),
+          Divider(),
           ListTile(
             leading: Icon(Icons.settings),
             title: Text('Settings'),
-            onTap: ()=>null,
+            onTap: ()=>Navigator.push(
+<<<<<<< HEAD
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SettingsScreen()),
+                          ),
+=======
+                  context,
+                  MaterialPageRoute(builder: (context) => SettingsScreen()),
+            
+          
+                ),
+>>>>>>> main
           ),
           Divider(),
           ListTile(
@@ -96,10 +115,21 @@ class NavBar extends StatelessWidget {
            Divider(),
           ListTile(
             leading: Icon(Icons.exit_to_app),
-            title: Text('Exit'),
-            onTap: ()=>null,
+            title: Text('Logout'),
+            onTap: ()=>Navigator.push(
+<<<<<<< HEAD
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginScreen()),
+                          ),
           ),
 
+=======
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginScreen()),
+            ),
+          ),         
+>>>>>>> main
         ],
        ),
     );
