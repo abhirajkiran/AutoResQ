@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:resp/Screens/NavBar.dart';
+import 'package:resp/Screens/SettingsScreen.dart';
+import 'package:resp/Screens/garageScreen.dart';
+import 'package:resp/Screens/loginScreen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -17,7 +20,7 @@ class HomeScreen extends StatelessWidget {
             SizedBox(height: 30),
             HomeAddWidget(),
             SizedBox(
-              height:10,
+              height: 10,
             ),
             HomeServicesMatrixWidget()
           ],
@@ -38,12 +41,12 @@ class HomeServicesMatrixWidget extends StatelessWidget {
     return Column(
       children: const [
         Padding(
-          padding: EdgeInsets.only(left:35),
+          padding: EdgeInsets.only(left: 35),
           child: FirstRowWidget(),
         ),
         SizedBox(height: 30),
         Padding(
-          padding: EdgeInsets.only(left:35),
+          padding: EdgeInsets.only(left: 35),
           child: SecondRowWidget(),
         )
       ],
@@ -143,12 +146,12 @@ class FirstRowWidget extends StatelessWidget {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top:30),
+                  padding: const EdgeInsets.only(top: 30),
                   child:
                       Center(child: Image.asset('assets/images/MECHANIC.png')),
                 ),
                 const SizedBox(
-                  height:8,
+                  height: 8,
                 ),
                 const Text(
                   'MECHANIC',
@@ -254,13 +257,14 @@ class HomeTopButtonWidget extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: IconButton(onPressed: () {
-            Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => NavBar()),
-                          );
-          }, icon: Icon(Icons.menu, size: 35)),
+          child: IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NavBar()),
+                );
+              },
+              icon: Icon(Icons.menu, size: 35)),
         ),
         Spacer(),
         Padding(
@@ -277,18 +281,39 @@ class HomeTopButtonWidget extends StatelessWidget {
   }
 }
 
-class BottomNavigationBarWidget extends StatelessWidget {
-  const BottomNavigationBarWidget({
+class BottomNavigationBarWidget extends StatefulWidget {
+  BottomNavigationBarWidget({
     super.key,
   });
 
   @override
+  State<BottomNavigationBarWidget> createState() =>
+      _BottomNavigationBarWidgetState();
+}
+
+class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
+  int _currentSelectedIndex =0;
+  final _pages = [HomeScreen(), GarageScreen(), SettingsScreen()];
+
+  @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      items: const <BottomNavigationBarItem>[
+      selectedItemColor: Colors.green,
+      
+      currentIndex: _currentSelectedIndex,
+      onTap: (index) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => _pages[_currentSelectedIndex]),
+        );
+        setState(() {
+          _currentSelectedIndex = index;
+        });
+      },
+      items:  [
         BottomNavigationBarItem(
           icon: Icon(Icons.home_outlined),
-          label: 'Services',
+          label: 'Home',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.directions_car),
