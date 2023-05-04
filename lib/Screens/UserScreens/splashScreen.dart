@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:resp/Screens/loginScreen.dart';
+import 'package:resp/Screens/UserScreens/loginScreen.dart';
 
 class SplashScreen extends StatelessWidget {
 
