@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:resp/Screens/NavBar.dart';
-import 'package:resp/Screens/SettingsScreen.dart';
-import 'package:resp/Screens/garageScreen.dart';
-import 'package:resp/Screens/loginScreen.dart';
+import 'package:resp/Screens/UserScreens/HomeScreens/NavBar.dart';
+import 'package:resp/Screens/UserScreens/SettingsScreen.dart';
+import 'package:resp/Screens/UserScreens/UserServiceScreens/user_FuelScreen.dart';
+import 'package:resp/Screens/UserScreens/UserServiceScreens/user_Tow.dart';
+import 'package:resp/Screens/UserScreens/UserServiceScreens/user_TyreScreen.dart';
+import 'package:resp/Screens/UserScreens/garageScreen.dart';
+import 'package:resp/Screens/UserScreens/loginScreen.dart';
+
+import '../UserServiceScreens/user_MechanicScreen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -64,7 +69,13 @@ class SecondRowWidget extends StatelessWidget {
     return Row(
       children: [
         InkWell(
-          onTap: () {},
+          onTap: () {
+             Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => UserTowScreen()),
+                      );
+          },
           child: Container(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.0), color: Colors.green),
@@ -95,7 +106,13 @@ class SecondRowWidget extends StatelessWidget {
           width: 30,
         ),
         InkWell(
-          onTap: () {},
+          onTap: () {
+             Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => UserFuelScreen()),
+                      );
+          },
           child: Container(
             height: 130,
             width: 130,
@@ -137,7 +154,13 @@ class FirstRowWidget extends StatelessWidget {
     return Row(
       children: [
         InkWell(
-          onTap: () {},
+          onTap: () {
+             Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => UserMechanicsScreen()),
+                      );
+          },
           child: Container(
             height: 130,
             width: 130,
@@ -168,7 +191,13 @@ class FirstRowWidget extends StatelessWidget {
           width: 30,
         ),
         InkWell(
-          onTap: () {},
+          onTap: () {
+             Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => UserTyreScreen()),
+                      );
+          },
           child: Container(
             height: 130,
             width: 130,

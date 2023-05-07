@@ -75,7 +75,7 @@ class CarFormScreen extends StatelessWidget {
               Center(
                 child: ElevatedButton(
                   onPressed: () {
-                    
+                    Navigator.of(context).pop();
                   },
                   child: Text('Submit'),
                 ),
