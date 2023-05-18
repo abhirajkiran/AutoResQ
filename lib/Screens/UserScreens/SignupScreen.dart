@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:resp/Screens/UserScreens/UserServiceScreens/Otp%20Screen/VerifyNumber.dart';
 import 'package:resp/Screens/UserScreens/loginScreen.dart';
+
+
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -22,6 +25,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final _Countrycodecontroller = TextEditingController();
   final _PhoneNumbercontroller = TextEditingController();
   final _Passwordcontroller = TextEditingController();
+  final _Emailcontroller = TextEditingController();
 
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
   @override
@@ -53,6 +57,7 @@ class _SignupScreenState extends State<SignupScreen> {
               style: TextStyle(fontSize: 15, color: Colors.grey),
             ),
           ),
+          SizedBox(height: 20),
           Container(
             child: Form(
               key: formkey,
@@ -79,7 +84,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       },
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 30,
                     ),
                     TextField(
                       controller: _LastNamecontroller,
@@ -91,93 +96,28 @@ class _SignupScreenState extends State<SignupScreen> {
                               borderRadius: BorderRadius.circular(15))),
                     ),
                     SizedBox(
-                      height: 45,
+                      height: 30,
                     ),
-                    /*  TextField(
-          
-                  ), */
-                    /* Scaffold(
-                  child:Container(
-                    padding: EdgeInsets.symmetric(horizontal: 15,vertical: 05),
-                    decoration: BoxDecoration(
-                      color:Colors.white,
-                    )
-                  )
-          
-                  ) */
-                    /* Container(
-                    decoration: BoxDecoration(
-                      /* border: Border.all(width: 1,color: Colors.white),
-                      borderRadius: BorderRadius.circular(10) */ */
-                    /*      
-                     ),
-                 child: */
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 60,
-                          child: TextField(
-                            onChanged: (value) {
-                              if (value.length == 3) {
-                                FocusScope.of(context).nextFocus();
-                              }
-                            },
-                            inputFormatters: [
-                              FilteringTextInputFormatter.digitsOnly,
-                              LengthLimitingTextInputFormatter(2),
-                            ],
-                            keyboardType: TextInputType.number,
-                            /*  keyboardType: TextInputType.phone, */
-                            controller: _Countrycodecontroller,
-                            decoration: InputDecoration(
-                                fillColor: Color.fromARGB(221, 255, 253, 253),
-                                filled: true,
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10))),
+                    TextFormField(
+                      keyboardType: TextInputType.emailAddress,
+                      autofillHints: [AutofillHints.email],
+                      controller: _Emailcontroller,
+                      decoration: InputDecoration(
+                          fillColor: Color.fromARGB(221, 255, 253, 253),
+                          filled: true,
+                          hintText: 'Email Address',
+                          prefixIcon: Icon(
+                            Icons.mail,
+                            color: Colors.grey,
                           ),
-                        ),
-                        /*  SizedBox(width: 5,),
-                      Text("|",style: TextStyle(fontSize:50,color: Colors.black )), */
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Expanded(
-                          child: TextField(
-                            onChanged: (value) {
-                              if (value.length == 10) {
-                                FocusScope.of(context).nextFocus();
-                              }
-                            },
-                            inputFormatters: [
-                              FilteringTextInputFormatter.digitsOnly,
-                              LengthLimitingTextInputFormatter(10),
-                            ],
-                            keyboardType: TextInputType.number,
-                            controller: _PhoneNumbercontroller,
-                            decoration: InputDecoration(
-                                fillColor: Color.fromARGB(221, 255, 253, 253),
-                                filled: true,
-                                hintText: "Phone Number",
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10))),
-                          ),
-                        ),
-                      ],
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15))),
+                      /* validator: (email)=>email !=null && !EmailValidator.validate(email),
+                              ? 'Enter a valid Email'
+                              : null, */
                     ),
-                    /*  ), */
-
-                    /* TextField(
-                    controller: _PhoneNumbercontroller,
-                        decoration: InputDecoration(
-                          fillColor:Color.fromARGB(221, 255, 253, 253),
-                      filled: true,
-                      hintText: 'Phone Number',
-                      border: OutlineInputBorder(
-                        borderRadius:BorderRadius.circular(15) )  
-                        ), */
-                    /*  ), */
                     SizedBox(
-                      height: 45,
+                      height: 30,
                     ),
                     TextField(
                       controller: _Passwordcontroller,
@@ -192,35 +132,44 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 40,
                     ),
                     //signupbutton
-                    ElevatedButton(
-                      onPressed: () {
-                        var _FirstName = _FirstNamecontroller.text;
-                        var _LastName = _LastNamecontroller.text;
-                        var _Countrycode = _Countrycodecontroller.text;
-                        var _PhoneNumber = _PhoneNumbercontroller.text;
-                        var _Password = _Passwordcontroller.text;
+                    SizedBox(
+                      height: 50,
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          var _FirstName = _FirstNamecontroller.text;
+                          var _LastName = _LastNamecontroller.text;
+                          var _EmailAddress = _Emailcontroller.text;
+                          var _Password = _Passwordcontroller.text;
 
-                        print("FirstName:" + _FirstName);
-                        print("LastName:" + _LastName);
-                        print("CountryCode:+" + _Countrycode);
-                        print("PhoneNumber:" + _PhoneNumber);
-                        print("Password:" + _Password);
-                      },
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor: Colors.white,
-                        backgroundColor: Colors.green,
-                        minimumSize: Size(90, 40),
-                      ),
-                      child: const Text(
-                        'Signup',
-                        style: TextStyle(fontSize: 20),
+                          print("FirstName:" + _FirstName);
+                          print("LastName:" + _LastName);
+                          print("Email Address:" + _EmailAddress);
+                          print("Password:" + _Password);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => VerifyNumber()),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: Colors.white,
+                          backgroundColor: Colors.green,
+                          minimumSize: Size(90, 50),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                        ),
+                        child: const Text(
+                          'Verify',
+                          style: TextStyle(fontSize: 20),
+                        ),
                       ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 15,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

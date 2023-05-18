@@ -1,37 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:resp/Screens/UserScreens/SettingsScreen.dart';
 import 'package:resp/Screens/UserScreens/HomeScreens/homeScreen.dart';
+import 'package:resp/Screens/UserScreens/SettingsScreen.dart';
+import 'package:resp/Screens/UserScreens/UserServiceScreens/NotificationScreen.dart';
 import 'package:resp/Screens/UserScreens/loginScreen.dart';
+
 class NavBar extends StatelessWidget {
   const NavBar({super.key});
   
-  get currentAccountPicture => null;
-
-
-/* @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: BackButton(
-         onPressed: ()
-         {
-          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HomeScreen()),
-                          );
-
-         }
-        ),
-
-      ),
-    );
-    }
-       */
-      
+  get currentAccountPicture => null;      
   @override
   Widget build(BuildContext context) {
-    return Drawer(
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          onPressed: (){
+            Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                );
+          },
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),         
+        ),
+      ),
+       body: Container(
    child: ListView(
         padding: EdgeInsets.zero,
         children: [
@@ -39,7 +36,7 @@ class NavBar extends StatelessWidget {
           accountEmail:null,
           currentAccountPicture: CircleAvatar(
             child: ClipOval(
-              child:Image.asset(
+              child:Image.asset(                
             'assets/images/User.png',
             width: 90,
             height: 90,
@@ -67,7 +64,10 @@ class NavBar extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.notifications),
             title: Text('Notifications'),
-            onTap: ()=>null,
+            onTap: ()=>Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NotificationScreen()),
+          ),
             trailing: ClipOval(
               child: Container(
                 color: Colors.red,width: 20,
@@ -111,6 +111,7 @@ class NavBar extends StatelessWidget {
             ),
           ),         
         ],
+       ),
        ),
     );
   }

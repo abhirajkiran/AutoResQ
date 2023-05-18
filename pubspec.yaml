@@ -32,6 +32,7 @@ dependencies:
   flutter:
     sdk: flutter
   image_picker: ^0.8.7+4
+  pinput: ^2.2.31
 
 dev_dependencies:
 
@@ -67,6 +68,8 @@ flutter:
     - assets\images\must.jpg
     - assets\images\green.jpg
     - assets\images\User.png
+    - assets\images\otp.png
+
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

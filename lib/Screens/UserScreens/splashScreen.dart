@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:resp/Screens/UserScreens/loginScreen.dart';
 
+
 class SplashScreen extends StatelessWidget {
 
  
@@ -38,9 +39,9 @@ class SplashScreen extends StatelessWidget {
                 ),
               ),
             ),
-            
-            Text(
-              'Auto ResQ v1.0',
+             SizedBox(height:10),
+            Text(             
+              'AutoResQ v1.0',
               style: TextStyle(fontWeight: FontWeight.w400),
             )
           ],

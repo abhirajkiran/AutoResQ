@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:resp/Screens/UserScreens/SignupScreen.dart';
 import 'package:resp/Screens/UserScreens/HomeScreens/homeScreen.dart';
+import 'package:resp/Screens/UserScreens/SignupScreen.dart';
+
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -62,8 +63,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             filled: true,
                             hintStyle: TextStyle(
-                                color: Colors.grey[800],
-                                fontWeight: FontWeight.w300),
+                                color: Colors.grey,
+                                ),
                             hintText: "Phone number",
                             fillColor: Colors.white),
                       ),
@@ -80,8 +81,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           filled: true,
                           hintStyle: TextStyle(
-                              color: Colors.grey[800],
-                              fontWeight: FontWeight.w300),
+                              color: Colors.grey,
+                              ),
                           hintText: "Password",
                           fillColor: Colors.white,
                           suffixIcon: togglePassword(),
@@ -200,7 +201,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                       builder: (context) => SignupScreen()),
                                 );
                               },
-                              child: Text('Sign up'))
+                              child: Text('Sign up',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize:18,
+                                color: Colors.green,
+                              ),
+                              ),
+                              ),
                         ],
                       ),
                     )

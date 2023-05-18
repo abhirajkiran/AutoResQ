@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:resp/Screens/UserScreens/HomeScreens/NavBar.dart';
 import 'package:resp/Screens/UserScreens/SettingsScreen.dart';
+import 'package:resp/Screens/UserScreens/UserServiceScreens/NotificationScreen.dart';
 import 'package:resp/Screens/UserScreens/UserServiceScreens/user_FuelScreen.dart';
 import 'package:resp/Screens/UserScreens/UserServiceScreens/user_Tow.dart';
 import 'package:resp/Screens/UserScreens/UserServiceScreens/user_TyreScreen.dart';
@@ -299,7 +300,12 @@ class HomeTopButtonWidget extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NotificationScreen()),
+                );
+              },
               icon: Icon(
                 Icons.notifications,
                 size: 35,
