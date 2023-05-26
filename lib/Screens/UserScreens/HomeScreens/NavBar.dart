@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:resp/Screens/UserScreens/HomeScreens/homeScreen.dart';
-import 'package:resp/Screens/UserScreens/SettingsScreen.dart';
+import 'package:resp/Screens/UserScreens/HomeScreens/SettingsScreen.dart';
 import 'package:resp/Screens/UserScreens/UserServiceScreens/NotificationScreen.dart';
-import 'package:resp/Screens/UserScreens/loginScreen.dart';
+import 'package:resp/Screens/UserScreens/HomeScreens/loginScreen.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({super.key});

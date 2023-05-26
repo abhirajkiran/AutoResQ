@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:resp/Screens/UserScreens/garageFormScreen.dart';
+import 'package:resp/Screens/UserScreens/HomeScreens/homeScreen.dart';
+import 'package:resp/Screens/UserScreens/UserServiceScreens/User_FuelChooseScreen.dart';
+import 'package:resp/Screens/UserScreens/UserServiceScreens/garageFormScreen.dart';
 
 class UserFuelScreen extends StatefulWidget {
   @override
@@ -13,14 +15,27 @@ class _UserFuelScreenState extends State<UserFuelScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Fuel Rescue'),
+        title: Text('FUEL'),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HomeScreen()),
+            );
+          },
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Center(
+            const SizedBox(height: 50),
+            Center(
               child: Text(
                 'select your Vehicle from Garage',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
@@ -72,18 +87,24 @@ class _UserFuelScreenState extends State<UserFuelScreen> {
                             builder: (context) => CarFormScreen()),
                       );
                     },
-                    child: Text('Enter the vehicle details manually'))),
+                    child: Text('ADD NEW'))),
 
             SizedBox(
-              height: 20,
+              height: 50,
             ),
 
             Center(
               child: Container(
-                width: MediaQuery.of(context).size.width * 2.3 / 3,
+                width: MediaQuery.of(context).size.width * 2.8 / 3,
                 child: ElevatedButton(
-                  onPressed: () {},
-                  child: Text('Find Fuel Rescue Providers Near Me'),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => UserFuelChooseScreen()),
+                    );
+                  },
+                  child: Text('CONTINUE'),
                 ),
               ),
             ),

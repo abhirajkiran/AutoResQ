@@ -69,6 +69,7 @@ flutter:
     - assets\images\green.jpg
     - assets\images\User.png
     - assets\images\otp.png
+    - assets\images\fuelpage.png
 
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see

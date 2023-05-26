@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:resp/Screens/UserScreens/loginScreen.dart';
-import 'package:resp/Screens/UserScreens/splashScreen.dart';
+import 'package:resp/Screens/UserScreens/HomeScreens/loginScreen.dart';
+import 'package:resp/Screens/UserScreens/HomeScreens/splashScreen.dart';
 import 'package:resp/Screens/UserScreens/UserServiceScreens/user_MechanicScreen.dart';
 import 'package:pinput/pinput.dart';
 import 'Screens/UserScreens/HomeScreens/NavBar.dart';
-import 'Screens/UserScreens/SignupScreen.dart';
+import 'Screens/UserScreens/HomeScreens/SignupScreen.dart';
 import 'Screens/UserScreens/HomeScreens/homeScreen.dart';
 
 

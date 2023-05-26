@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:resp/Screens/UserScreens/HomeScreens/NavBar.dart';
-import 'package:resp/Screens/UserScreens/SettingsScreen.dart';
+import 'package:resp/Screens/UserScreens/HomeScreens/SettingsScreen.dart';
 import 'package:resp/Screens/UserScreens/UserServiceScreens/NotificationScreen.dart';
 import 'package:resp/Screens/UserScreens/UserServiceScreens/user_FuelScreen.dart';
 import 'package:resp/Screens/UserScreens/UserServiceScreens/user_Tow.dart';
 import 'package:resp/Screens/UserScreens/UserServiceScreens/user_TyreScreen.dart';
-import 'package:resp/Screens/UserScreens/garageScreen.dart';
-import 'package:resp/Screens/UserScreens/loginScreen.dart';
+import 'package:resp/Screens/UserScreens/UserServiceScreens/garageScreen.dart';
+import 'package:resp/Screens/UserScreens/HomeScreens/loginScreen.dart';
 
 import '../UserServiceScreens/user_MechanicScreen.dart';
 

@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:resp/Screens/UserScreens/HomeScreens/NavBar.dart';
 import 'package:resp/Screens/UserScreens/HomeScreens/homeScreen.dart';
-import 'package:resp/Screens/UserScreens/loginScreen.dart';
+import 'package:resp/Screens/UserScreens/HomeScreens/loginScreen.dart';
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
 

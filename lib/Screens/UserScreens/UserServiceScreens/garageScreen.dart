@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:resp/Screens/UserScreens/garageFormScreen.dart';
+import 'package:resp/Screens/UserScreens/UserServiceScreens/garageFormScreen.dart';
 import 'package:resp/Screens/UserScreens/HomeScreens/homeScreen.dart';
 
 
-import 'package:resp/Screens/UserScreens/loginScreen.dart';
+import 'package:resp/Screens/UserScreens/HomeScreens/loginScreen.dart';
 
 import 'package:resp/widgets/vehicleCard.dart';
 

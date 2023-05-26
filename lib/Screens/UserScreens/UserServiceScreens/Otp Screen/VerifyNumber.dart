@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:resp/Screens/UserScreens/SignupScreen.dart';
+import 'package:resp/Screens/UserScreens/HomeScreens/SignupScreen.dart';
 import 'package:resp/Screens/UserScreens/UserServiceScreens/Otp%20Screen/OtpScreen.dart';
 
 /* import 'package:pinput/pinput.dart'; */
