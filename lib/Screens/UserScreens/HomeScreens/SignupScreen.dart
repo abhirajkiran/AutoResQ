@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:resp/Screens/UserScreens/HomeScreens/homeScreen.dart';
 import 'package:resp/Screens/UserScreens/UserServiceScreens/Otp%20Screen/VerifyNumber.dart';
 import 'package:resp/Screens/UserScreens/HomeScreens/loginScreen.dart';
 
@@ -140,7 +142,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
-                          var _FirstName = _FirstNamecontroller.text;
+                          /* var _FirstName = _FirstNamecontroller.text;
                           var _LastName = _LastNamecontroller.text;
                           var _EmailAddress = _Emailcontroller.text;
                           var _Password = _Passwordcontroller.text;
@@ -148,12 +150,18 @@ class _SignupScreenState extends State<SignupScreen> {
                           print("FirstName:" + _FirstName);
                           print("LastName:" + _LastName);
                           print("Email Address:" + _EmailAddress);
-                          print("Password:" + _Password);
-                          Navigator.push(
+                          print("Password:" + _Password); */
+                         /*  Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => VerifyNumber()),
-                          );
+                          ); */
+                          FirebaseAuth.instance.createUserWithEmailAndPassword(email:_Emailcontroller.text, password: _Passwordcontroller.text) .then((value){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const HomeScreen()),
+                        );
+                      }).onError((error, stackTrace) {print("Error ${error.toString()}");});
                         },
                         style: ElevatedButton.styleFrom(
                           foregroundColor: Colors.white,

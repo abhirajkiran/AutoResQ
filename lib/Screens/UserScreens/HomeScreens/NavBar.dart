@@ -3,6 +3,7 @@ import 'package:resp/Screens/UserScreens/HomeScreens/homeScreen.dart';
 import 'package:resp/Screens/UserScreens/HomeScreens/SettingsScreen.dart';
 import 'package:resp/Screens/UserScreens/UserServiceScreens/NotificationScreen.dart';
 import 'package:resp/Screens/UserScreens/HomeScreens/loginScreen.dart';
+import 'package:resp/services/firebase_services.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({super.key});
@@ -105,10 +106,15 @@ class NavBar extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.exit_to_app),
             title: Text('Logout'),
-            onTap: ()=>Navigator.push(
+            onTap: ()async{
+              await FirebaseServices().signOut();
+               Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => LoginScreen()),
-            ),
+            );
+            }
+            
+           
           ),         
         ],
        ),

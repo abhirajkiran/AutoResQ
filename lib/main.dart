@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:resp/Screens/UserScreens/HomeScreens/loginScreen.dart';
 import 'package:resp/Screens/UserScreens/HomeScreens/splashScreen.dart';
@@ -8,7 +9,9 @@ import 'Screens/UserScreens/HomeScreens/SignupScreen.dart';
 import 'Screens/UserScreens/HomeScreens/homeScreen.dart';
 
 
-void main() {
+Future<void> main() async{
+   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 

@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:resp/Screens/UserScreens/HomeScreens/homeScreen.dart';
 import 'package:resp/Screens/UserScreens/HomeScreens/SignupScreen.dart';
+import 'package:resp/services/firebase_services.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -14,7 +16,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool _isSecurePassword = true;
-  final _phoneNumbercontroller = TextEditingController();
+  final _emailcontroller = TextEditingController();
   final _passwordcontroller = TextEditingController();
 
   @override
@@ -56,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       padding:
                           const EdgeInsets.only(left: 8.0, right: 8.0, top: 30),
                       child: TextField(
-                        controller: _phoneNumbercontroller,
+                        controller: _emailcontroller,
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15.0),
@@ -65,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             hintStyle: TextStyle(
                                 color: Colors.grey,
                                 ),
-                            hintText: "Phone number",
+                            hintText: "Email",
                             fillColor: Colors.white),
                       ),
                     ),
@@ -97,11 +99,22 @@ class _LoginScreenState extends State<LoginScreen> {
                       borderRadius: BorderRadius.all(Radius.circular(15)),
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.push(
+                            FirebaseAuth.instance
+                              .signInWithEmailAndPassword(
+                                  email: _emailcontroller.text,
+                                  password: _passwordcontroller.text)
+                              .then((value) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HomeScreen()),
+                            );
+                          });
+                          /* Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => HomeScreen()),
-                          );
+                          ); */
                         },
                         style: ElevatedButton.styleFrom(
                           foregroundColor: Colors.white,
@@ -170,7 +183,14 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                             TextButton(
-                                onPressed: () {},
+                                onPressed: () async{
+                                     await FirebaseServices().signInWithGoogle();
+                                  Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HomeScreen()),
+                            );
+                                },
                                 child: Text(
                                   'Continue with Google',
                                   style: TextStyle(
