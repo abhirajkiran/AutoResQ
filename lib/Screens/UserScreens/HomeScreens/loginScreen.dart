@@ -1,9 +1,11 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:resp/Screens/UserScreens/HomeScreens/homeScreen.dart';
 import 'package:resp/Screens/UserScreens/HomeScreens/SignupScreen.dart';
+import 'package:resp/Screens/UserScreens/UserServiceScreens/PasswordScreen/ForgotPasswordScreen.dart';
 import 'package:resp/services/firebase_services.dart';
 
 
@@ -19,11 +21,25 @@ class _LoginScreenState extends State<LoginScreen> {
   final _emailcontroller = TextEditingController();
   final _passwordcontroller = TextEditingController();
 
+  void validateEmail(){
+  final bool isValid = EmailValidator.validate(_emailcontroller.text.trim());
+  if(isValid){}
+  else
+  {
+    ScaffoldMessenger.of(context)
+    .showSnackBar(SnackBar(content:Text("Please Enter a Valid Email and Password")));
+  }
+  }
+  final formKey = GlobalKey<FormState>();
+  String name= "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
+      body: Stack(      
         children: [
+          /*  child:Form(
+          key: formKey, */
           Image.asset(
             'assets/images/LoginBackground.png',
             fit: BoxFit.cover,
@@ -47,17 +63,17 @@ class _LoginScreenState extends State<LoginScreen> {
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(30),
                 topRight: Radius.circular(30),
-              ),
+              ),             
               child: Container(
                 height: double.infinity,
                 width: double.infinity,
-                color: Colors.grey.withOpacity(.4),
+                color: Colors.grey.withOpacity(.4),               
                 child: Column(
                   children: [
                     Padding(
                       padding:
                           const EdgeInsets.only(left: 8.0, right: 8.0, top: 30),
-                      child: TextField(
+                      child: TextFormField(
                         controller: _emailcontroller,
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
@@ -69,6 +85,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                             hintText: "Email",
                             fillColor: Colors.white),
+                            validator: (value){
+                              if(value!.isEmpty || !RegExp(r'^ [\W-\.]+@([\W-]+\.)+[\w-]{2,4}').hasMatch(value)){
+                                return "Enter Email id";
+                              }
+                              else{
+                                return null;
+                              }
+                              
+                            },
                       ),
                     ),
                     Padding(
@@ -110,11 +135,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                   builder: (context) => const HomeScreen()),
                             );
                           });
-                          /* Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HomeScreen()),
-                          ); */
+                          {
+                           validateEmail();
+                          }
+                          /* {
+                            if(formKey.currentState!.validate()){
+                              final SnackBar = SnackBar(content: Text("Please wait"));
+                              _scaffoldkey.currentState!.showSnackBar(SnackBar);
+                            }                           
+                          }         */                 
                         },
                         style: ElevatedButton.styleFrom(
                           foregroundColor: Colors.white,
@@ -142,11 +171,20 @@ class _LoginScreenState extends State<LoginScreen> {
                                       color: Colors.white,
                                       fontWeight: FontWeight.w500),
                                 ),
-                                onPressed: () {}),
+                                onPressed: () {
+                                  Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const ForgotPasswordScreen()),
+                            );
+
+                                }),
                           ),
                         )
                       ],
+                    
                     ),
+                    
                     SizedBox(
                       height: 10,
                     ),
@@ -236,8 +274,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
-          )
+          )        
         ],
+     
       ),
     );   
   }
