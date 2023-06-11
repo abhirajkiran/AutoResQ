@@ -9,18 +9,19 @@ import 'package:resp/Screens/UserScreens/UserServiceScreens/PasswordScreen/Forgo
 import 'package:resp/Screens/UserScreens/UserServiceScreens/ServiceProviderList.dart';
 import 'package:resp/services/firebase_services.dart';
 
-import '../../AdminScreen/AdminDashBoard.dart';
-import '../../AdminScreen/adminLogin.dart';
-import '../../IntermediatoryScreens/intermediatoryLogin.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+import 'intermediatoryDashboard.dart';
+
+
+
+class intermediatoryLoginScreen extends StatefulWidget {
+  const intermediatoryLoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<intermediatoryLoginScreen> createState() => _intermediatoryLoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _intermediatoryLoginScreenState extends State<intermediatoryLoginScreen> {
   bool _isSecurePassword = true;
   final _emailcontroller = TextEditingController();
   final _passwordcontroller = TextEditingController();
@@ -121,7 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 14,
+                      height: 300,
                     ),
                     ClipRRect(
                       borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -135,7 +136,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const HomeScreen()),
+                                  builder: (context) => const intermediatoryHomePage()),
                             );
                           });
                           {
@@ -162,146 +163,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(
                       height: 3,
                     ),
-                    Row(
-                      children: [
-                        Container(
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 200),
-                            child: TextButton(
-                                child: Text(
-                                  'Recover Password',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const ForgotPasswordScreen()),
-                                  );
-                                }),
-                          ),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Center(
-                      child: Container(
-                        child: Text(
-                          'OR',
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 14,
-                    ),
-                    ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                      child: Container(
-                        height: 59,
-                        width: 350,
-                        color: Colors.white,
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 40.0),
-                                child: Image.asset(
-                                  'assets/images/google.png',
-                                  height: 30,
-                                ),
-                              ),
-                            ),
-                            TextButton(
-                                onPressed: () async {
-                                  await FirebaseServices().signInWithGoogle();
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const HomeScreen()),
-                                  );
-                                },
-                                child: Text(
-                                  'Continue with Google',
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      color: Color.fromARGB(255, 83, 76, 76),
-                                      fontWeight: FontWeight.w700),
-                                )),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 50,
-                    ),
-                    Container(
-                      child: Row(
-                        children: [
-                          SizedBox(width: 60),
-                          Text(
-                            "Don't have an account yet?",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => SignupScreen()),
-                              );
-                            },
-                            child: Text(
-                              'Sign up',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 18,
-                                color: Colors.green,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 40,
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 60,
-                        ),
-                        TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const adminLoginScreen()),
-                              );
-                            },
-                            child: Text('Admin login')),
-                        TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const intermediatoryLoginScreen()),
-                            );
-                            },
-                            child: Text('Intermediatory login'))
-                      ],
-                    )
+                    
+                    
+                    
                   ],
                 ),
               ),
