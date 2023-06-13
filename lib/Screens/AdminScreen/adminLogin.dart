@@ -24,6 +24,9 @@ class _adminLoginScreenState extends State<adminLoginScreen> {
   bool _isSecurePassword = true;
   final _emailcontroller = TextEditingController();
   final _passwordcontroller = TextEditingController();
+  final adminEmail='admin.autoresq@gmail.com';
+
+  final adminPass='autoadmin@999';
 
   void validateEmail() {
     final bool isValid = EmailValidator.validate(_emailcontroller.text.trim());
@@ -127,7 +130,7 @@ class _adminLoginScreenState extends State<adminLoginScreen> {
                       borderRadius: BorderRadius.all(Radius.circular(15)),
                       child: ElevatedButton(
                         onPressed: () {
-                          FirebaseAuth.instance
+                          /* FirebaseAuth.instance
                               .signInWithEmailAndPassword(
                                   email: _emailcontroller.text,
                                   password: _passwordcontroller.text)
@@ -146,8 +149,29 @@ class _adminLoginScreenState extends State<adminLoginScreen> {
                               final SnackBar = SnackBar(content: Text("Please wait"));
                               _scaffoldkey.currentState!.showSnackBar(SnackBar);
                             }                           
-                          }         */
+                          } */         */
+
+                          if(_emailcontroller.text==adminEmail && _passwordcontroller.text==adminPass){
+                            FirebaseAuth.instance
+                              .signInWithEmailAndPassword(
+                                  email: _emailcontroller.text,
+                                  password: _passwordcontroller.text)
+                              .then((value) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const adminHomePage()),
+                            );
+                          });
+                          {
+                            validateEmail();
+                          }
+                          }else{
+                            print('invald id');
+                          }
                         },
+                      
+                        
                         style: ElevatedButton.styleFrom(
                           foregroundColor: Colors.white,
                           backgroundColor: Colors.green,
