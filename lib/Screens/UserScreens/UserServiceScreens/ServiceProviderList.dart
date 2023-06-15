@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:resp/Screens/UserScreens/UserServiceScreens/serviceproviderhome.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ServiceProviderScreen extends StatefulWidget {
@@ -13,7 +14,6 @@ class ServiceProviderScreen extends StatefulWidget {
 class _ServiceProviderScreenState extends State<ServiceProviderScreen> {
   final CollectionReference intermediatoryusers =
       FirebaseFirestore.instance.collection('intermediatoryusers');
-     
 
   @override
   Widget build(BuildContext context) {
@@ -41,8 +41,12 @@ class _ServiceProviderScreenState extends State<ServiceProviderScreen> {
                   itemBuilder: (context, index) {
                     final DocumentSnapshot intermediatorysnap =
                         snapshot.data.docs[index];
-                         Uri dialnumber=Uri(scheme: 'tel',path: '${intermediatorysnap[
-                                                  'contactnumber']}');
+                    final String companyname=intermediatorysnap['companyname'];
+                    final String service=intermediatorysnap['service'];
+                    final int contactnumber=intermediatorysnap['contactnumber'];
+                    Uri dialnumber = Uri(
+                        scheme: 'tel',
+                        path: '${intermediatorysnap['contactnumber']}');
                     return Container(
                       child: ListView(
                         itemExtent: 100.0,
@@ -62,16 +66,21 @@ class _ServiceProviderScreenState extends State<ServiceProviderScreen> {
                               child: Row(
                                 children: [
                                   ElevatedButton.icon(
-                                      onPressed: () async{
-                                       /*  directcall() async {
+                                      onPressed: () async {
+                                        /*  directcall() async {
                                           await FlutterPhoneDirectCaller
                                               .callNumber('${intermediatorysnap[
                                                   'contactnumber']}');
                                         } */
-                                        await launchUrl(dialnumber);
+                                        /* await launchUrl(dialnumber); */
+                                         Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => interMediatoryProfile(companyname: companyname,contactnumber: contactnumber,service: service,)),
+                            );
                                       },
-                                      icon: Icon(Icons.call),
-                                      label: Text("Call Now")),
+                                      icon: Icon(Icons.safety_check_outlined),
+                                      label: Text("Register")),
                                 ],
                               ),
                             ),
