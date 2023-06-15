@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resp/Screens/UserScreens/UserServiceScreens/ServiceProviderList.dart';
 import 'package:resp/Screens/UserScreens/UserServiceScreens/garageFormScreen.dart';
 
 class UserTyreScreen extends StatefulWidget {
@@ -81,7 +82,13 @@ class _UserTyreScreenState extends State<UserTyreScreen> {
               child: Container(
                 width: MediaQuery.of(context).size.width * 2.3 / 3,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>ServiceProviderScreen()),
+                            );
+                  },
                   child: Text('Find Tyre Service Near me'),
                 ),
               ),

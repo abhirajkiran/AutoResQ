@@ -1,10 +1,11 @@
-
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:uuid/uuid.dart';
+
+var uuid = Uuid();
 
 class adminFormField extends StatefulWidget {
   const adminFormField({super.key});
@@ -17,18 +18,8 @@ class _adminFormFieldState extends State<adminFormField> {
   final _companynamecontroller = TextEditingController();
   final _regnumbercontroller = TextEditingController();
   final _locationcontroller = TextEditingController();
-  final _pincodecontroller = TextEditingController();
+  final _servicecontroller = TextEditingController();
   final _contactnumbercontroller = TextEditingController();
-
-  String dropdownvalue = 'Flat Bed';
-
-  var items = [
-    'Flat Bed',
-    'Tyre',
-    'Mechanical',
-    'Gas'
-  ];
-  List<String> selectedItems = [];
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +76,7 @@ class _adminFormFieldState extends State<adminFormField> {
               SizedBox(height: 10),
 
               TextField(
-                  controller: _pincodecontroller,
+                  controller: _servicecontroller,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -93,7 +84,7 @@ class _adminFormFieldState extends State<adminFormField> {
                       ),
                       borderRadius: BorderRadius.circular(10.0),
                     ),
-                    hintText: "PINCODE",
+                    hintText: "SERVICE",
                   )),
               SizedBox(height: 10),
 
@@ -110,108 +101,28 @@ class _adminFormFieldState extends State<adminFormField> {
                   )),
               SizedBox(height: 10),
 
-              /* DropdownButtonHideUnderline(
-                child: DropdownButton2(
-                  isExpanded: true,
-                  hint: Align(
-                    alignment: AlignmentDirectional.center,
-                    child: Text(
-                      'Select Items',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Theme.of(context).hintColor,
-                      ),
-                    ),
-                  ),
-                  items: items.map((item) {
-                    return DropdownMenuItem<String>(
-                      value: item,
-                      //disable default onTap to avoid closing menu when selecting an item
-                      enabled: false,
-                      child: StatefulBuilder(
-                        builder: (context, menuSetState) {
-                          final _isSelected = selectedItems.contains(item);
-                          return InkWell(
-                            onTap: () {
-                              _isSelected
-                                  ? selectedItems.remove(item)
-                                  : selectedItems.add(item);
-                              //This rebuilds the StatefulWidget to update the button's text
-                              setState(() {});
-                              //This rebuilds the dropdownMenu Widget to update the check mark
-                              menuSetState(() {});
-                            },
-                            child: Container(
-                              height: double.infinity,
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 16.0),
-                              child: Row(
-                                children: [
-                                  _isSelected
-                                      ? const Icon(Icons.check_box_outlined)
-                                      : const Icon(
-                                          Icons.check_box_outline_blank),
-                                  const SizedBox(width: 16),
-                                  Text(
-                                    item,
-                                    style: const TextStyle(
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    );
-                  }).toList(),
-                  //Use last selected item as the current value so if we've limited menu height, it scroll to last item.
-                  value: selectedItems.isEmpty ? null : selectedItems.last,
-                  onChanged: (value) {},
-                  selectedItemBuilder: (context) {
-                    return items.map(
-                      (item) {
-                        return Container(
-                          alignment: AlignmentDirectional.center,
-                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          child: Text(
-                            selectedItems.join(', '),
-                            style: const TextStyle(
-                              fontSize: 14,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            maxLines: 1,
-                          ),
-                        );
-                      },
-                    ).toList();
-                  },
-                  buttonStyleData: const ButtonStyleData(
-                    height: 40,
-                    width: 140,
-                  ),
-                  menuItemStyleData: const MenuItemStyleData(
-                    height: 40,
-                    padding: EdgeInsets.zero,
-                  ),
-                ),
-              ), */
-
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green, // background (button) color
                   foregroundColor: Colors.white, // foreground (text) color
                 ),
-                onPressed: (){
-                  final companyname=_companynamecontroller.text;
-                  final regnumber=_regnumbercontroller.text;
-                  final location=_locationcontroller.text;
-                  final pincode=_pincodecontroller.text;
-                  final contactnumber=_contactnumbercontroller.text;
-             
-                createMechanic(companyname:companyname,regnumber:regnumber,location:location,pincode:pincode,contactnumber:contactnumber);
-                Navigator.of(context).pop();
+                onPressed: () {
+                  final companyname = _companynamecontroller.text;
+                  final regnumber = _regnumbercontroller.text;
+                  final location = _locationcontroller.text;
+                  final service = _servicecontroller.text;
+                  final contactnumber =
+                      int.parse(_contactnumbercontroller.text);
+                  final String id = uuid.v1();
+
+                  createMechanic(
+                      companyname: companyname,
+                      regnumber: regnumber,
+                      location: location,
+                      service: service,
+                      contactnumber: contactnumber,
+                      id: id);
+                  Navigator.of(context).pop();
                 },
                 child: const Text('ADD'),
               )
@@ -223,15 +134,22 @@ class _adminFormFieldState extends State<adminFormField> {
   }
 }
 
-Future createMechanic({required String companyname,required String regnumber,required String location,required String pincode,required String contactnumber})async{
- final docMechanic=FirebaseFirestore.instance.collection('intermediatoryusers').doc('my-id');
-  final json={
-     'companyname':companyname,
-     'regnnumber':regnumber,
-     'location':location,
-     'pincode':pincode,
-     'contactnumber':contactnumber
+Future createMechanic(
+    {required String companyname,
+    required String regnumber,
+    required String location,
+    required String service,
+    required int contactnumber,
+    required String id})
+     async {
+  final docMechanic =
+      FirebaseFirestore.instance.collection('intermediatoryusers').doc(id);
+  final json = {
+    'companyname': companyname,
+    'regnnumber': regnumber,
+    'location': location,
+    'service': service,
+    'contactnumber': contactnumber
   };
   await docMechanic.set(json);
 }
-  

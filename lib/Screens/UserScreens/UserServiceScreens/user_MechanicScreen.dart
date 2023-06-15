@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resp/Screens/UserScreens/UserServiceScreens/ServiceProviderList.dart';
 import 'package:resp/Screens/UserScreens/UserServiceScreens/garageFormScreen.dart';
 
 class UserMechanicsScreen extends StatefulWidget {
@@ -79,7 +80,13 @@ class _UserMechanicsScreenState extends State<UserMechanicsScreen> {
               child: Container(
                 width: MediaQuery.of(context).size.width * 2.3 / 3,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>ServiceProviderScreen()),
+                            );
+                  },
                   child: Text('Find Mechanics Near Me'),
                 ),
               ),

@@ -127,6 +127,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       borderRadius: BorderRadius.all(Radius.circular(15)),
                       child: ElevatedButton(
                         onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HomeScreen()),
+                            );
                           FirebaseAuth.instance
                               .signInWithEmailAndPassword(
                                   email: _emailcontroller.text,

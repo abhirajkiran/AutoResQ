@@ -151,7 +151,7 @@ class _adminLoginScreenState extends State<adminLoginScreen> {
                             }                           
                           } */         */
 
-                          if(_emailcontroller.text==adminEmail && _passwordcontroller.text==adminPass){
+                         /*  if(_emailcontroller.text==adminEmail && _passwordcontroller.text==adminPass){
                             FirebaseAuth.instance
                               .signInWithEmailAndPassword(
                                   email: _emailcontroller.text,
@@ -168,7 +168,13 @@ class _adminLoginScreenState extends State<adminLoginScreen> {
                           }
                           }else{
                             print('invald id');
-                          }
+                          } */
+
+                           Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const adminHomePage()),
+                            );
                         },
                       
                         
