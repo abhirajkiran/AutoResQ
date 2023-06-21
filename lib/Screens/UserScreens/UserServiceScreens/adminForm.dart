@@ -1,9 +1,12 @@
+import 'dart:js_interop';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:uuid/uuid.dart';
+import 'package:geopoint/geopoint.dart';
 
 var uuid = Uuid();
 
@@ -70,8 +73,13 @@ class _adminFormFieldState extends State<adminFormField> {
                         color: Colors.blueAccent,
                       ),
                       borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    hintText: "LOCATION",
+                    ),hintText: "(12.3456,78.9101)",
+                    labelText: "LOCATION",
+                    labelStyle: TextStyle(
+                    
+                    fontSize: 14,
+                    
+                   )
                   )),
               SizedBox(height: 10),
 
@@ -110,6 +118,7 @@ class _adminFormFieldState extends State<adminFormField> {
                   final companyname = _companynamecontroller.text;
                   final regnumber = _regnumbercontroller.text;
                   final location = _locationcontroller.text;
+    
                   final service = _servicecontroller.text;
                   final contactnumber =
                       int.parse(_contactnumbercontroller.text);
@@ -119,6 +128,7 @@ class _adminFormFieldState extends State<adminFormField> {
                       companyname: companyname,
                       regnumber: regnumber,
                       location: location,
+                      
                       service: service,
                       contactnumber: contactnumber,
                       id: id);
@@ -148,6 +158,8 @@ Future createMechanic(
     'companyname': companyname,
     'regnnumber': regnumber,
     'location': location,
+                 //    'location':GeoPoint(location.,location.GeoPoint.longitude);
+
     'service': service,
     'contactnumber': contactnumber
   };

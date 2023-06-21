@@ -5,14 +5,21 @@ import 'package:resp/Screens/UserScreens/UserServiceScreens/ServiceProviderList.
 import 'package:resp/Screens/UserScreens/UserServiceScreens/googlemapscreens/serviceprovidermap.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class interMediatoryProfile extends StatelessWidget {
+class interMediatoryProfile extends StatefulWidget {
   final String companyname;
   final String service;
   final int contactnumber;
+  final String location;
+    
   
 
-   interMediatoryProfile({super.key, required this.companyname, required this.service, required this.contactnumber});
-  
+   interMediatoryProfile({super.key, required this.companyname, required this.service, required this.contactnumber, required this.location});
+
+  @override
+  State<interMediatoryProfile> createState() => _interMediatoryProfileState();
+}
+
+class _interMediatoryProfileState extends State<interMediatoryProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +37,7 @@ class interMediatoryProfile extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                  Text(
-                  companyname,
+                  widget.companyname,
                   style: TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
@@ -38,7 +45,7 @@ class interMediatoryProfile extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  service,
+                  widget.service,
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.grey[600],
@@ -53,7 +60,7 @@ class interMediatoryProfile extends StatelessWidget {
                     onPressed: () async{
                        Uri dialnumber = Uri(
                         scheme: 'tel',
-                        path: contactnumber.toString());
+                        path: widget.contactnumber.toString());
                         await launchUrl(dialnumber);
                       // Perform an action when the button is pressed
                       print('Button pressed');
@@ -76,7 +83,7 @@ class interMediatoryProfile extends StatelessWidget {
                       Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const ServiceProviderMap()),
+                                  builder: (context) =>  ServiceProviderMap()),
                             );
                       // Perform an action when the button is pressed
                       print('Button pressed');

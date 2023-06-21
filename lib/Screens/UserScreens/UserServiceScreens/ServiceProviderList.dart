@@ -44,6 +44,7 @@ class _ServiceProviderScreenState extends State<ServiceProviderScreen> {
                     final String companyname=intermediatorysnap['companyname'];
                     final String service=intermediatorysnap['service'];
                     final int contactnumber=intermediatorysnap['contactnumber'];
+                    final String location=intermediatorysnap['location'];
                     Uri dialnumber = Uri(
                         scheme: 'tel',
                         path: '${intermediatorysnap['contactnumber']}');
@@ -76,7 +77,7 @@ class _ServiceProviderScreenState extends State<ServiceProviderScreen> {
                                          Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => interMediatoryProfile(companyname: companyname,contactnumber: contactnumber,service: service,)),
+                                  builder: (context) => interMediatoryProfile(companyname: companyname,contactnumber: contactnumber,service: service,location: location,)),
                             );
                                       },
                                       icon: Icon(Icons.safety_check_outlined),
