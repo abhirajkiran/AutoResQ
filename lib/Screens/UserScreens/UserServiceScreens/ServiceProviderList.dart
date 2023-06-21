@@ -44,7 +44,7 @@ class _ServiceProviderScreenState extends State<ServiceProviderScreen> {
                     final String companyname=intermediatorysnap['companyname'];
                     final String service=intermediatorysnap['service'];
                     final int contactnumber=intermediatorysnap['contactnumber'];
-                    final String location=intermediatorysnap['location'];
+                    final List location=intermediatorysnap['location'];
                     Uri dialnumber = Uri(
                         scheme: 'tel',
                         path: '${intermediatorysnap['contactnumber']}');

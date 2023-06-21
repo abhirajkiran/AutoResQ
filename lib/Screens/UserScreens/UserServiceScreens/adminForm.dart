@@ -1,12 +1,12 @@
-import 'dart:js_interop';
+
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 import 'package:uuid/uuid.dart';
-import 'package:geopoint/geopoint.dart';
+
 
 var uuid = Uuid();
 
@@ -117,7 +117,7 @@ class _adminFormFieldState extends State<adminFormField> {
                 onPressed: () {
                   final companyname = _companynamecontroller.text;
                   final regnumber = _regnumbercontroller.text;
-                  final location = _locationcontroller.text;
+                  final location = _locationcontroller.text.split(',');
     
                   final service = _servicecontroller.text;
                   final contactnumber =
@@ -147,18 +147,20 @@ class _adminFormFieldState extends State<adminFormField> {
 Future createMechanic(
     {required String companyname,
     required String regnumber,
-    required String location,
+    required List location,
     required String service,
     required int contactnumber,
     required String id})
      async {
+
+
   final docMechanic =
       FirebaseFirestore.instance.collection('intermediatoryusers').doc(id);
   final json = {
     'companyname': companyname,
     'regnnumber': regnumber,
     'location': location,
-                 //    'location':GeoPoint(location.,location.GeoPoint.longitude);
+                 
 
     'service': service,
     'contactnumber': contactnumber
