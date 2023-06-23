@@ -1,92 +1,80 @@
-import 'dart:async';
-
+import 'package:geolocator/geolocator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-import '../../../../constants/constants.dart';
-
 class ServiceProviderMap extends StatefulWidget {
-  
   const ServiceProviderMap({super.key, required this.latlong});
-  final List latlong;
+    final List latlong;
+
+
   @override
-  State<ServiceProviderMap> createState() => _ServiceProviderMapState();
+  State<ServiceProviderMap> createState() => _ServiceProviderMap();
 }
 
-class _ServiceProviderMapState extends State<ServiceProviderMap> {
+class _ServiceProviderMap extends State<ServiceProviderMap> {
+  
+  late GoogleMapController mapController;
 
-   //var destination=this.destination;
+  LatLng? _currentPosition;
+  bool _isLoading = true;
 
-/*   static const LatLng sourcelocation = LatLng(37.33500926, -122.03272188);
-  static const LatLng destination = LatLng(37.33429383, -122.06600055); */
-  /* static const LatLng sourcelocation=LatLng(, longitude) */
+  @override
+  void initState() {
+    super.initState();
+    getLocation();
+  }
 
+  getLocation() async {
+    LocationPermission permission;
+    permission = await Geolocator.requestPermission();
 
-  /* List<LatLng> PolylineCoordinates=[];   */
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    double lat = position.latitude;
+    double long = position.longitude;
 
+    LatLng sourcelocation = LatLng(lat, long);
+
+    setState(() {
+      _currentPosition = sourcelocation;
+      _isLoading = false;
+    });
+  }
   
 
- /*  @override
-  void initState() {
-    
-    getPolyPoints();
-    super.initState();
-  } */
- //final GlobalKey<ReusableCardState> reusableCardKey = GlobalKey();
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
+
   @override
   Widget build(BuildContext context) {
-      LatLng sourcelocation = LatLng(37.33500926, -122.03272188);
     LatLng destination= LatLng( double.parse(widget.latlong[0]), double.parse(widget.latlong[1])); 
-    
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          "Company Name",
-          style: TextStyle(color: Colors.black, fontSize: 16),
-        ),
+        title: const Text('Map'),
       ),
-      body: GoogleMap(
-        initialCameraPosition:
-            CameraPosition(target: sourcelocation, zoom: 14.5),
-           /*  polylines:{
-              Polyline(polylineId: PolylineId("route"),
-              points: PolylineCoordinates,
-              color: Colors.green,
-              width: 6
-              ),
-               
-            } , */
-        markers: {
-          Marker(markerId: MarkerId("source"), position: sourcelocation),
+      body: _isLoading ? 
+      Center(child:CircularProgressIndicator()) : 
+      GoogleMap(
+        onMapCreated: _onMapCreated,
+        initialCameraPosition: CameraPosition(
+          target:_currentPosition!,
+          zoom: 16.0,
+        ),
+          markers: {
+          Marker(markerId: MarkerId("source"), position: _currentPosition!),
           Marker(markerId: MarkerId("destination"),position: destination)
+        },
+        polylines: {
+          Polyline(polylineId: PolylineId("route"),
+          points: [_currentPosition!,destination],
+          color: Colors.green,
+          width: 6
+
+          )
         },
       ),
     );
   }
-
-
-
- /*  void getPolyPoints()async{
-     PolylinePoints polylinePoints=PolylinePoints();
-
-     PolylineResult result=await polylinePoints.getRouteBetweenCoordinates(
-      API_KEY,
-       PointLatLng(widget.latlong[0], sourcelocation.longitude),
-        PointLatLng(destination.latitude, destination.longitude ));
-
-        if(result.points.isNotEmpty){
-          result.points.forEach((PointLatLng point)  { 
-            PolylineCoordinates.add(LatLng(point.latitude, point.longitude));  
-          });
-          setState(() {
-            
-          });
-
-        }
-        
-  } */
 }

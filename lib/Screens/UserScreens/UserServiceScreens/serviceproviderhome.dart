@@ -82,7 +82,7 @@ class _interMediatoryProfileState extends State<interMediatoryProfile> {
                       Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>  ServiceProviderMap(latlong: widget.location,)),
+                                  builder: (context) =>  ServiceProviderMap(latlong:widget.location,)),
                             );
                       // Perform an action when the button is pressed
                       print('Button pressed');
@@ -109,6 +109,7 @@ class _interMediatoryProfileState extends State<interMediatoryProfile> {
         )
     );
   }
+  
 }
 
 
