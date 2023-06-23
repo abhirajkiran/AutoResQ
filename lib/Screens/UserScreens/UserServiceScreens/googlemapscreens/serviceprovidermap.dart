@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'dart:math';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:label_marker/label_marker.dart';
+
 class ServiceProviderMap extends StatefulWidget {
   const ServiceProviderMap({super.key, required this.latlong});
     final List latlong;
@@ -17,7 +17,8 @@ class _ServiceProviderMap extends State<ServiceProviderMap> {
   
   late GoogleMapController mapController;
 
-  LatLng? _currentPosition;
+   LatLng ? _currentPosition;
+  
   bool _isLoading = true;
 
   @override
@@ -36,10 +37,14 @@ class _ServiceProviderMap extends State<ServiceProviderMap> {
     double long = position.longitude;
 
     LatLng sourcelocation = LatLng(lat, long);
+      
+
+
 
     setState(() {
       _currentPosition = sourcelocation;
-      _isLoading = false;
+     
+     // _isLoading = false;
     });
   }
   
@@ -57,17 +62,19 @@ class _ServiceProviderMap extends State<ServiceProviderMap> {
   
   }
 
+  
+
   @override
-  Widget build(BuildContext context) {
+ Widget build(BuildContext context) {
     LatLng destination= LatLng( double.parse(widget.latlong[0]), double.parse(widget.latlong[1])); 
-    double distance=calculateDistance(_currentPosition!.latitude, _currentPosition!.longitude, destination.latitude, destination.longitude);
-    print('ABAAAAA:${distance}');
+      double distance=calculateDistance(_currentPosition!.latitude, _currentPosition!.longitude, destination.latitude, destination.longitude);
+  
     return Scaffold(
       appBar: AppBar(
         title: const Text('Map'),
       ),
-      body: _isLoading ? 
-      Center(child:CircularProgressIndicator()) : 
+      body:/*  _isLoading ? 
+      Center(child:CircularProgressIndicator()) :  */
       Stack(
         children: [
           GoogleMap(
@@ -79,7 +86,7 @@ class _ServiceProviderMap extends State<ServiceProviderMap> {
         ),
           markers: {
           Marker(markerId: MarkerId("source"), position: _currentPosition!,),
-          Marker(markerId: MarkerId("destination"),position: destination)
+          Marker(markerId: MarkerId("destination"),position:destination)
           
         },
         

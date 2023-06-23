@@ -1,5 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'package:resp/Screens/UserScreens/UserServiceScreens/googlemapscreens/serviceprovidermap.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -19,8 +23,13 @@ class interMediatoryProfile extends StatefulWidget {
 }
 
 class _interMediatoryProfileState extends State<interMediatoryProfile> {
+  
+ 
+
+  
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
 
       appBar: AppBar(title: const Text('COMPANY DETAILS'),),
