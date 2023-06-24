@@ -292,7 +292,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        const adminLoginScreen()),
+                                        const AdminLoginScreen()),
                               );
                             },
                             child: Text('Admin login')),

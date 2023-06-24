@@ -2,25 +2,19 @@ import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:resp/Screens/UserScreens/HomeScreens/homeScreen.dart';
-import 'package:resp/Screens/UserScreens/HomeScreens/SignupScreen.dart';
-import 'package:resp/Screens/UserScreens/UserServiceScreens/PasswordScreen/ForgotPasswordScreen.dart';
-import 'package:resp/Screens/UserScreens/UserServiceScreens/ServiceProviderList.dart';
-import 'package:resp/services/firebase_services.dart';
-
+import 'package:resp/Screens/UserScreens/HomeScreens/loginScreen.dart';
 import 'AdminDashBoard.dart';
 
 
 
-class adminLoginScreen extends StatefulWidget {
-  const adminLoginScreen({super.key});
+class AdminLoginScreen extends StatefulWidget {
+  const AdminLoginScreen({super.key});
 
   @override
-  State<adminLoginScreen> createState() => _adminLoginScreenState();
+  State<AdminLoginScreen> createState() => _AdminLoginScreenState();
 }
 
-class _adminLoginScreenState extends State<adminLoginScreen> {
+class _AdminLoginScreenState extends State<AdminLoginScreen> {
   bool _isSecurePassword = true;
   final _emailcontroller = TextEditingController();
   final _passwordcontroller = TextEditingController();
@@ -123,9 +117,34 @@ class _adminLoginScreenState extends State<adminLoginScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 300,
+                    Row(
+                      children: [
+                        SizedBox(
+                          height: 10,
+                        ),
+                        TextButton(                                                 
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const LoginScreen()),
+                              );
+                            },
+                            child: Text('Login Page'),
+                            ),
+
+                            
+                            SizedBox(
+                      height: 10,
                     ),
+                    SizedBox(
+                      height: 285,
+                    ),
+                      ]
+                    ),
+                    
+                    
                     ClipRRect(
                       borderRadius: BorderRadius.all(Radius.circular(15)),
                       child: ElevatedButton(
@@ -173,7 +192,7 @@ class _adminLoginScreenState extends State<adminLoginScreen> {
                            Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const adminHomePage()),
+                                  builder: (context) => const AdminHomePage()),
                             );
                         },
                       
@@ -195,11 +214,15 @@ class _adminLoginScreenState extends State<adminLoginScreen> {
                     
                     
                     
+                    
                   ],
                 ),
+                  
               ),
+              
             ),
-          )
+          ),
+          
         ],
       ),
     );
