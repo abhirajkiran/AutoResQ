@@ -64,7 +64,8 @@ class SecondRowWidget extends StatelessWidget {
   const SecondRowWidget({
     super.key,
   });
-
+  final towServiceText="Tow Service Needed";
+  final fuelScreenText="Fuel Needed";
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -149,7 +150,8 @@ class FirstRowWidget extends StatelessWidget {
   const FirstRowWidget({
     super.key,
   });
-
+ final mechanicServiceText="mechanical Service Needed";
+  final tyreScreenText="Tyre Service Needed";
   @override
   Widget build(BuildContext context) {
     return Row(

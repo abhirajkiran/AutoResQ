@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -23,7 +24,7 @@ class _SignupScreenState extends State<SignupScreen> {
   bool _isSecurePassword = true;
 
   final _FirstNamecontroller = TextEditingController();
-  final _LastNamecontroller = TextEditingController();
+  final _phonecontroller = TextEditingController();
   final _Countrycodecontroller = TextEditingController();
   final _PhoneNumbercontroller = TextEditingController();
   final _Passwordcontroller = TextEditingController();
@@ -75,7 +76,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       decoration: InputDecoration(
                           fillColor: Color.fromARGB(221, 255, 253, 253),
                           filled: true,
-                          hintText: 'First Name',
+                          hintText: 'Name',
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15))),
                       validator: (value) {
@@ -89,11 +90,11 @@ class _SignupScreenState extends State<SignupScreen> {
                       height: 30,
                     ),
                     TextField(
-                      controller: _LastNamecontroller,
+                      controller: _phonecontroller,
                       decoration: InputDecoration(
                           fillColor: Color.fromARGB(221, 255, 253, 253),
                           filled: true,
-                          hintText: 'Last Name',
+                          hintText: 'Phone',
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15))),
                     ),
@@ -142,20 +143,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
-                          /* var _FirstName = _FirstNamecontroller.text;
-                          var _LastName = _LastNamecontroller.text;
-                          var _EmailAddress = _Emailcontroller.text;
-                          var _Password = _Passwordcontroller.text;
-
-                          print("FirstName:" + _FirstName);
-                          print("LastName:" + _LastName);
-                          print("Email Address:" + _EmailAddress);
-                          print("Password:" + _Password); */
-                         /*  Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => VerifyNumber()),
-                          ); */
+                          
                           FirebaseAuth.instance.createUserWithEmailAndPassword(email:_Emailcontroller.text, password: _Passwordcontroller.text) .then((value){
                       Navigator.push(
                           context,
@@ -208,12 +196,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 color: Colors.green,
                               ),
                             )),
-                        /* Text("Login",style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 18,
-                  color: Colors.green,
-                ),
-                ) */
+                        
                       ],
                     ),
                   ],
@@ -239,4 +222,20 @@ class _SignupScreenState extends State<SignupScreen> {
       color: Colors.grey,
     );
   }
+
+
+/*   Future createUser(
+    {required String username,
+    
+    required int userphonenumber,
+    required String id}) async {
+  final docUser =
+      FirebaseFirestore.instance.collection('user').doc(id);
+  final json = {
+   'username':username,
+   'userphonenumber':userphonenumber,
+   'id':id
+  };
+  await docUser.set(json);
+} */
 }

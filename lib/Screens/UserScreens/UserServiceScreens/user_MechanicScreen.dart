@@ -3,6 +3,11 @@ import 'package:resp/Screens/UserScreens/UserServiceScreens/ServiceProviderList.
 import 'package:resp/Screens/UserScreens/UserServiceScreens/garageFormScreen.dart';
 
 class UserMechanicsScreen extends StatefulWidget {
+
+  
+
+
+  const UserMechanicsScreen({super.key});
   @override
   _UserMechanicsScreenState createState() => _UserMechanicsScreenState();
 }
@@ -84,7 +89,7 @@ class _UserMechanicsScreenState extends State<UserMechanicsScreen> {
                     Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>ServiceProviderScreen()),
+                                  builder: (context) =>ServiceProviderScreen(servicename:"Mechanical support" ,vehicle: dropdownValue,)),
                             );
                   },
                   child: Text('Find Mechanics Near Me'),

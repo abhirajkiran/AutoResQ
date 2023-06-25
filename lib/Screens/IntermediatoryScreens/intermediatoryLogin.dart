@@ -139,6 +139,12 @@ class _intermediatoryLoginScreenState extends State<intermediatoryLoginScreen> {
                                   builder: (context) => const intermediatoryHomePage()),
                             );
                           });
+
+                          /* Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const intermediatoryHomePage()),
+                            ); */
                           {
                             validateEmail();
                           }

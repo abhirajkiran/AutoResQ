@@ -4,11 +4,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:resp/Screens/UserScreens/UserServiceScreens/adminForm.dart';
 
 import 'package:resp/Screens/UserScreens/UserServiceScreens/serviceproviderhome.dart';
 
 class ServiceProviderScreen extends StatefulWidget {
-  const ServiceProviderScreen({super.key});
+  const ServiceProviderScreen({super.key,required this.servicename,required this.vehicle});
+  final servicename;
+  final vehicle;
 
   @override
   State<ServiceProviderScreen> createState() => _ServiceProviderScreenState();
@@ -20,6 +23,7 @@ class _ServiceProviderScreenState extends State<ServiceProviderScreen> {
    LatLng ?_currentPosition;
 
   getLocation() async {
+    // ignore: unused_local_variable
     LocationPermission permission;
     permission = await Geolocator.requestPermission();
 
@@ -109,6 +113,10 @@ class _ServiceProviderScreenState extends State<ServiceProviderScreen> {
                                 children: [
                                   ElevatedButton.icon(
                                       onPressed: () async {
+                                        final String id = uuid.v1();
+                                       
+
+                                        
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
@@ -140,4 +148,21 @@ class _ServiceProviderScreenState extends State<ServiceProviderScreen> {
           }),
     );
   }
+  Future createServicerequest(
+    {required String servicename,
+    required String vechiclename,
+    
+    required String id})
+     async {
+
+
+  final docMechanic =
+      FirebaseFirestore.instance.collection('intermediatoryusers').doc(id);
+  final json = {
+    'servicename':servicename,
+    'vehiclename':vechiclename,
+    'id':id
+  };
+  await docMechanic.set(json);
+}
 }

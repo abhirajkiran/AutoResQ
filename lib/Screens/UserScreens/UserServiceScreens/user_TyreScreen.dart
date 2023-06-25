@@ -3,6 +3,9 @@ import 'package:resp/Screens/UserScreens/UserServiceScreens/ServiceProviderList.
 import 'package:resp/Screens/UserScreens/UserServiceScreens/garageFormScreen.dart';
 
 class UserTyreScreen extends StatefulWidget {
+  
+
+  const UserTyreScreen({super.key,});
   @override
   _UserTyreScreenState createState() => _UserTyreScreenState();
 }
@@ -86,7 +89,7 @@ class _UserTyreScreenState extends State<UserTyreScreen> {
                     Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>ServiceProviderScreen()),
+                                  builder: (context) =>ServiceProviderScreen(servicename: "Tyre service",vehicle: dropdownValue,)),
                             );
                   },
                   child: Text('Find Tyre Service Near me'),
