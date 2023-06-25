@@ -36,7 +36,7 @@ class _DownloadScreenState extends State<DownloadScreen> {
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset("assets/images/must.jpg",
+                    Image.asset("assets/images/AUTORESQ QR.png",
                         height: 300, width: 300),
                     SizedBox(height: 25),
                     Text(
