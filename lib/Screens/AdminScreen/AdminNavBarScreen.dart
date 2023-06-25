@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:resp/Screens/AdminScreen/AdminDashBoard.dart';
+import 'package:resp/Screens/AdminScreen/AdminIntermediatoryScreen.dart';
+import 'package:resp/Screens/AdminScreen/AdminUserDetailsScreen.dart';
 import 'package:resp/Screens/AdminScreen/adminLogin.dart';
 import 'package:resp/services/firebase_services.dart';
 
@@ -58,10 +60,10 @@ class AdminNavBar extends StatelessWidget {
               leading: Icon(Icons.verified_user_rounded),
               title: Text('User Details'),
               onTap: () async {                  
-                 /*  Navigator.push(
+                  Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => AdminUserDetails()),
-                  ); */
+                    MaterialPageRoute(builder: (context) => AdminUserDetailsScreen()),
+                  );
                 } ,
             ),
             Divider(),
@@ -69,10 +71,10 @@ class AdminNavBar extends StatelessWidget {
               leading: Icon(Icons.description),
               title: Text('Admin Intermediatory Details'),
               onTap: () async {                 
-                  /* Navigator.push(
+                  Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => AdminIntermediatoryDetails()),
-                  ); */
+                    MaterialPageRoute(builder: (context) => AdminIntermediatoryDetailsScreen()),
+                  );
                 }
             ),
             Divider(),
