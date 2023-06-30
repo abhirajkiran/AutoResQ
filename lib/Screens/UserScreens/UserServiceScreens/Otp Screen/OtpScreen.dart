@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:pinput/pinput.dart';
 import 'package:resp/Screens/UserScreens/HomeScreens/SignupScreen.dart';
+import 'package:resp/Screens/UserScreens/HomeScreens/homeScreen.dart';
 import 'package:resp/Screens/UserScreens/UserServiceScreens/Otp%20Screen/VerifyNumber.dart';
 
 
@@ -100,7 +101,12 @@ class _OtpScreenState extends State<OtpScreen> {
                     height: 45,
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomeScreen()),
+              );
+                      },
                       child: Text(
                         'Verify Phone Number',
                         style: TextStyle(
